@@ -4,13 +4,19 @@ require("dotenv").config()
 const cors = require("cors");
 
 const app = express();
-
 const charactersRoutes = require("./src/routes/charactersRoutes")
 
 //routes
 app.get("/", (req, res) => {
     res.send("Welcome to my API");
 });
+
+const connectionOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
+app.use(express.json());
 
 const corsOption={
   origin:"*",
@@ -19,10 +25,9 @@ const corsOption={
   credentials: true
 };
 
-//mongodb connection
-mongoose.set("strictQuery", true)
+mongoose.set("strictQuery", false)
 mongoose
-  .connect(process.env.mongoURL)
+  .connect(process.env.mongoURL, connectionOptions)
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error(error));
 
