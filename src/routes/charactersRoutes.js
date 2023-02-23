@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const CharacterController = require("../Controllers/CharactersController")
 
-router.get("/", CharacterController.getCharactersList);
+router.get("/Characters", CharacterController.getCharactersList);
 
-router.post("/new", CharacterController.postNewCharacter)
+router.post("/newCharacter", CharacterController.postNewCharacter)
 
 router.put("/Character/:id", CharacterController.editOneCharacter);
 

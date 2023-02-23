@@ -18,7 +18,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error(error));
 
-app.use("/characters", charactersRoutes);
+app.use("/App", charactersRoutes);
 
 app.listen(process.env.port, () => {
     console.log("The server is listening to port 3005");
