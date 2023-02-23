@@ -1,10 +1,10 @@
 const express = require('express');
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+require("dotenv").config()
 
-const PORT = 3005;
 const app = express();
 
-const charactersRoutes = require("./routes/charactersRoutes")
+const charactersRoutes = require("./src/routes/charactersRoutes")
 
 //routes
 app.get("/", (req, res) => {
@@ -14,13 +14,13 @@ app.get("/", (req, res) => {
 //mongodb connection
 mongoose.set("strictQuery", true)
 mongoose
-  .connect("mongodb+srv://danisanrio:kuromi@apisanrio.hbsyxya.mongodb.net/SanrioCharacters")
+  .connect(process.env.mongoURL)
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error(error));
 
 app.use("/characters", charactersRoutes);
 
-app.listen(PORT, () => {
-    console.log("The server is listening to port " + PORT);
+app.listen(process.env.port, () => {
+    console.log("The server is listening to port 3005");
 });
 
