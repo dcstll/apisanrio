@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
-require("dotenv").config()
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 const charactersRoutes = require("./src/routes/charactersRoutes")
@@ -18,7 +18,7 @@ const connectionOptions = {
 
 app.use(express.json());
 
-const corsOption={
+const corsOption = {
   origin:"*",
   method:["GET", "POST", "PUT", "DELETE"],
   allowedHeaders:["Origin", "X-Requested-With", "Content-Type", "Accept"],
